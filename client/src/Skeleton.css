@@ -1,0 +1,97 @@
+.animate-pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+.skeleton-image {
+  background-color: rgb(223, 223, 223);
+  height: 120px;
+  width: 300px;
+  border-radius: 10px;
+}
+.skeleton-title {
+  background-color: rgb(223, 223, 223);
+  height: 40px;
+  width: 300px;
+  border-radius: 5px;
+  margin: 10px 0px;
+}
+.skeleton-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.skeleton-buttons .circle {
+  background-color: rgb(223, 223, 223);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+}
+.skeleton-buttons .box{
+  background-color: rgb(223, 223, 223);
+  height: 40px;
+  width: 100px;
+  border: none;
+  border-radius: 8px;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* for NoteDetails loading */
+.skeleton-detail-image {
+  background-color: rgb(223, 223, 223);
+  height: 300px;
+  width: 100%;
+  margin: auto;
+  border-radius: 10px;
+}
+.skeleton-detail-title {
+  background-color: rgb(223, 223, 223);
+  height: 30px;
+  width: 300px;
+  border-radius: 5px;
+  margin: 10px auto;
+}
+.skeleton-detail-content {
+  background-color: rgb(223, 223, 223);
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  margin: 5px auto;
+}
+/* for admin notes skeleton loading */
+.admin-skeleton-image{
+  background-color: rgb(223, 223, 223);
+  width: 250px;
+  height: 150px;
+  border-radius: 10px;
+}
+.admin-skeleton-body{
+  padding: 0px 15px;
+}
+.admin-skeleton-body .admin-skeleton-title{
+  background-color: rgb(223, 223, 223);
+  width: 850px;
+  height: 25px;
+  border-radius: 5px;
+}
+.admin-skeleton-body .admin-skeleton-content{
+  background-color: rgb(223, 223, 223);
+  width: 850px;
+  height: 50px;
+  margin: 10px 0px;
+  border-radius: 5px;
+}
+.admin-skeleton-body .admin-skeleton-buttons button{
+  background-color: rgb(223, 223, 223);
+  border: none;
+  width: 80px;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 10px;
+}

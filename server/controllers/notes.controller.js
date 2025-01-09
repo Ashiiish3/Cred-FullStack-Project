@@ -38,7 +38,8 @@ const notesDelete = async (req, res) => {
 const getAllNotes = async (req, res) => {
     const { userId } = req.params
     try {
-        if (!id) {
+        if (!userId) {
+            console.log("userId")
             return res.status(400).json({ message: 'ID is required' });
         }
         if (userId != req.user._id) {

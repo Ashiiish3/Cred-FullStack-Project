@@ -21,7 +21,7 @@ app.use("/user", userRouter)
 app.use("/note", notesRouter)
 app.listen(process.env.PORT || 5000, async () => {
     try {
-        await connectWithDb()
+        await connectWithDb
         console.log(`Server is running on Port ${process.env.PORT || 5000}`)
     } catch (error) {
         console.log(error)

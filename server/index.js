@@ -11,7 +11,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.static("./UploadsImages"));
 app.use(cors({
-    origin: ["https://cred-full-stack-project.vercel.app" || "https://cred-full-stack-project-kfydcq4xh.vercel.app", 'http://localhost:3000', 'http://localhost:4000', "http://localhost:5000"],
+    origin: ["https://cred-full-stack-project.vercel.app" || "https://cred-full-stack-project-j38qqj10a.vercel.app", 'http://localhost:3000', 'http://localhost:4000', "http://localhost:5000"],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],

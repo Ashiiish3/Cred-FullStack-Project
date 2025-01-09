@@ -38,6 +38,9 @@ const notesDelete = async (req, res) => {
 const getAllNotes = async (req, res) => {
     const { userId } = req.params
     try {
+        if (!id) {
+            return res.status(400).json({ message: 'ID is required' });
+        }
         if (userId != req.user._id) {
             return res.status(403).json({ message: "You don't have permission to view this note." })
         }
@@ -155,4 +158,4 @@ const deleteNotesbyAdmin = async (req, res) => {
         res.status(400).json({ message: error })
     }
 }
-module.exports = { notesCreate, notesDelete, getAllNotes, getSingleNote, updateNotes, getAllNotesByAdmin, deleteNotesbyAdmin, updateNotebyAdmin,getSingleNotebyAdmin }
+module.exports = { notesCreate, notesDelete, getAllNotes, getSingleNote, updateNotes, getAllNotesByAdmin, deleteNotesbyAdmin, updateNotebyAdmin, getSingleNotebyAdmin }

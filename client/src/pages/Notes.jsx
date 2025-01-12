@@ -7,14 +7,14 @@ import { NotesSkeleton } from '../SkeletonLoading/NotesSkeleton'
 
 export default function Notes() {
   const { user } = useSelector((data) => data.auth)
-  const { isLoading, isSuccess, refetch, data } = useGetAllNoteQuery(user?._id);
+  const { data, isLoading, isSuccess, refetch } = useGetAllNoteQuery(user._id);
   useEffect(() => {
     if (isSuccess) {
       refetch()
     }
-  }, [isSuccess, refetch, isLoading, data])
+  }, [isSuccess, isLoading, data, user])
   return (
-    <div style={{ minHeight: "100vh" }} className='d-flex flex-column flex-md-row' >
+    <div style={{ minHeight: "100vh" }} className='d-flex flex-column flex-md-row'>
       <div className='container notes-container'>
         {
           data?.allUserNotes.length > 0 ? data?.allUserNotes.map((note) => <NoteCard key={note._id} note={note} />) : isLoading ? [1, 2, 3, 4, 5].map((ele, i) => <NotesSkeleton key={i} />) : <Container className="py-5">

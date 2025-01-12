@@ -24,7 +24,7 @@ export function Login() {
             // const token = Cookies.get('AccessToken')
             // console.log(token)
             // dispatch(userLogIn({ token }));
-            localStorage.setItem("userData", JSON.stringify(data.userData))
+            localStorage.setItem("userData", JSON.stringify(userData))
             navigate('/notes')
         }
         if (isError) {

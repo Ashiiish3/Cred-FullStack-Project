@@ -22,8 +22,6 @@ export const userAPI = createApi({
             async onQueryStarted(arg, { queryFulfilled, dispatch }){
                 try {
                     const { data } = await queryFulfilled;
-                    console.log(data)
-                    console.log(data.token)
                     dispatch(
                         userLogIn({
                             user: data.userData,

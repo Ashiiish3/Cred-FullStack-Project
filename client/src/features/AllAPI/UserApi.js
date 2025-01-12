@@ -27,6 +27,7 @@ export const userAPI = createApi({
                     dispatch(
                         userLogIn({
                             user: data.userData,
+                            token: data.token,
                             isAuth: true
                         })
                     )

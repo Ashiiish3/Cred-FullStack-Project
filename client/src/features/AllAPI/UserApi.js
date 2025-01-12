@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { userLogIn } from '../AuthSlice';
 
 const baseUrl = `${process.env.REACT_APP_URL}/user`;
 export const userAPI = createApi({
@@ -17,7 +18,22 @@ export const userAPI = createApi({
                 url: "/signin",
                 method: "POST",
                 body: newPost
-            })
+            }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }){
+                try {
+                    const { data } = await queryFulfilled;
+                    console.log(data)
+                    console.log(data.token)
+                    dispatch(
+                        userLogIn({
+                            user: data.userData,
+                            isAuth: true
+                        })
+                    )
+                } catch (error) {
+                    console.error("Login error:", error);
+                }
+            }
         })
     })
 })

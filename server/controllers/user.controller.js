@@ -50,7 +50,7 @@ const userSignIn = async (req, res) => {
                         return res.status(400).json({ message: "Error while creating token." })
                     }
                     if (token) {
-                        res.cookie("AccessToken", token).status(200).json({ message: "Login Successfully.", userData: rest })
+                        res.cookie("AccessToken", token, {httpOnly: true, sameSite: 'Strict'}).status(200).json({ message: "Login Successfully.", userData: rest })
                     }
                 })
             } else {

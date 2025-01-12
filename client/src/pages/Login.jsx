@@ -22,7 +22,8 @@ export function Login() {
             const { userData, message } = data;
             toast.success(message || "Login Successfully.")
             const token = Cookies.get('AccessToken')
-            dispatch(userLogIn({ user: userData, token, isAuth: true }));
+            console.log(token)
+            dispatch(userLogIn({ token }));
             localStorage.setItem("userData", JSON.stringify(data.userData))
             navigate('/notes')
         }

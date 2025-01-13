@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 const initialState = {
     user: JSON.parse(localStorage.getItem("userData")) || null,
-    token: null,
+    token: Cookies.get('AccessToken') || null,
     isAuth: false
 }
 

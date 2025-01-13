@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useUserSignInMutation } from "../features/AllAPI/UserApi";
-import Cookies from 'js-cookie';
 import { useDispatch } from "react-redux";
-import { userLogIn } from "../features/AuthSlice";
 
 export function Login() {
     const [email, setemail] = useState("");
@@ -21,9 +19,6 @@ export function Login() {
         if (isSuccess) {
             const { userData, message } = data;
             toast.success(message || "Login Successfully.")
-            // const token = Cookies.get('AccessToken')
-            // console.log(token)
-            // dispatch(userLogIn({ token }));
             localStorage.setItem("userData", JSON.stringify(userData))
             navigate('/notes')
         }

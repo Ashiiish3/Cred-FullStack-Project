@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa6";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 export default function Navbar() {
-  const { user } = useSelector((data) => data.auth)
+  const { user, token } = useSelector((data) => data.auth)
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div className="container">
@@ -38,45 +43,44 @@ export default function Navbar() {
             />
           </div>
           <ul className="navbar-nav ms-auto align-items-center gap-2">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="userDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr_IULLOXJT80cLu-eRqkRGrHY23yLEx4p0w&s"
-                  alt="user"
-                  className="rounded-circle"
-                  width="30"
-                  height="30"
-                />
-              </a>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="userDropdown"
-              >
-                <li className="dropdown-header">@username</li>
-                <li>
-                  <Link to="/dashboard?tab=profile" className="dropdown-item">
-                    Profile
+            {
+              token ?
+                <div className="position-relative d-inline-block text-start">
+                  <button
+                    onClick={toggleDropdown}
+                    className="btn btn-link p-0 border-0"
+                    aria-expanded={isOpen}
+                  >
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr_IULLOXJT80cLu-eRqkRGrHY23yLEx4p0w&s"
+                      alt="user"
+                      className="rounded-circle"
+                      width="30"
+                      height="30"
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="dropdown-menu show position-absolute end-0 mt-2 p-0 w-auto">
+                      <div className="dropdown-header fw-bold">Hi {user.name}!</div>
+                      <div className="dropdown-divider"></div>
+                      <a href="/profile" className="dropdown-item">
+                        Profile
+                      </a>
+                      <button
+                        onClick={() => alert("Signed out")}
+                        className="dropdown-item"
+                      >
+                        Sign out
+                      </button>
+                    </div>
+                  )}
+                </div> :
+                <li className="nav-item">
+                  <Link to="/sign-in" className="btn btn-outline-primary">
+                    Sign In
                   </Link>
                 </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <button className="dropdown-item">Sign out</button>
-                </li> </ul>
-            </li>
-            <li className="nav-item">
-              <Link to="/sign-in" className="btn btn-outline-primary">
-                Sign In
-              </Link>
-            </li>
+            }
             {
               user?.role === "admin" && <li className="nav-item">
                 <Link to={'/getAllNotes'} className="btn btn-outline-primary">

@@ -33,8 +33,23 @@ export const userAPI = createApi({
                     console.error("Login error:", error);
                 }
             }
+        }),
+        userSignOut: builder.mutation({
+            query: () => ({
+                url: '/signout',
+                method: "GET"
+            }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(userLogOut())
+
+                } catch (error) {
+                    console.error("Logout error:", error);
+                }
+            }
         })
     })
 })
 
-export const { useUserSignUpMutation, useUserSignInMutation } = userAPI
+export const { useUserSignUpMutation, useUserSignInMutation, useUserSignOutMutation } = userAPI

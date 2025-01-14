@@ -1,17 +1,27 @@
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useUserSignOutMutation } from "../features/AllAPI/UserApi";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
   const { user, token } = useSelector((data) => data.auth)
   const [isOpen, setIsOpen] = useState(false);
+  const [userSignOut, { data, isSuccess }] = useUserSignOutMutation()
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  const signOut = () =>{
-    alert("Signed out")
+  const signOut = async () =>{
+    navigate('/')
+    await userSignOut()
   }
+  useEffect(()=>{
+    if(isSuccess){
+      toast.success(data?.message || "You are log out successfully.")
+    }
+  },[isSuccess])
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div className="container">

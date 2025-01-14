@@ -30,7 +30,11 @@ export const Allroutes = () => {
             <Route path="/updateNote/:noteId" element={<UpdateNote />}></Route>
             <Route path="/noteDetails/:noteId" element={<NoteDetails />}></Route>
             {/* Router for Admin can update note */}
-            <Route path="/getAllNotes" element={<AllNotesGet />}></Route>
+            <Route path="/getAllNotes" element={
+                <PrivateRoutes>
+                    <AllNotesGet />
+                </PrivateRoutes>
+            }></Route>
             <Route path="/updateNotebyAdmin/:noteId" element={<UpdateNotebyAdmin />}></Route>
             <Route path="*" element={<h1>Page Not found.</h1>}></Route>
         </Routes>

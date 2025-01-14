@@ -62,4 +62,13 @@ const userSignIn = async (req, res) => {
     }
 }
 
-module.exports = { userSignUp, userSignIn }
+const userSignOut = (req, res) => {
+    try {
+        console.log(req.cookies)
+        res.clearCookie("AccessToken").json({ message: "User Log out successfully." })
+    } catch (error) {
+        res.status(500).send({ message: "Error while LogOut", error })
+    }
+}
+
+module.exports = { userSignUp, userSignIn, userSignOut }

@@ -9,6 +9,9 @@ export default function Navbar() {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  const signOut = () =>{
+    alert("Signed out")
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div className="container">
@@ -63,11 +66,8 @@ export default function Navbar() {
                     <div className="dropdown-menu show position-absolute end-0 mt-2 p-0 w-auto">
                       <div className="dropdown-header fw-bold">Hi {user.name}!</div>
                       <div className="dropdown-divider"></div>
-                      <a href="/profile" className="dropdown-item">
-                        Profile
-                      </a>
                       <button
-                        onClick={() => alert("Signed out")}
+                        onClick={signOut}
                         className="dropdown-item"
                       >
                         Sign out

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaPlus } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 export default function Navbar() {
   const { user, token } = useSelector((data) => data.auth)
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate()
   const [userSignOut, { data, isSuccess }] = useUserSignOutMutation()
 
   const toggleDropdown = () => {

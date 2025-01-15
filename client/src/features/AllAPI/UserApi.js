@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { userLogIn } from '../AuthSlice';
+import { userLogIn, userLogOut } from '../AuthSlice';
 
 const baseUrl = `${process.env.REACT_APP_URL}/user`;
 export const userAPI = createApi({
